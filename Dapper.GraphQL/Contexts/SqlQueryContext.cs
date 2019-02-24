@@ -16,6 +16,13 @@ namespace Dapper.GraphQL
         {
             _types.Add(typeof(TEntityType));
         }
+
+        public SqlQueryContext(string from, string alias = null, dynamic parameters = null)
+            : base(alias == null ? from : $"{from} {alias}")
+        {
+            _types.Add(typeof(TEntityType));
+        }
+
     }
 
     public class SqlQueryContext

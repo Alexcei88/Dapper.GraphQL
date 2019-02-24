@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GraphQL.Language.AST
@@ -18,8 +19,7 @@ namespace GraphQL.Language.AST
                     .SelectionSet
                     .Selections
                     .OfType<Field>()
-                    .ToDictionary(field => field.Name);
-
+                    .ToDictionary(field => field.Name, StringComparer.OrdinalIgnoreCase);
                 return fields;
             }
             return null;

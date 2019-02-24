@@ -32,7 +32,13 @@ namespace Dapper.GraphQL
         public static SqlQueryContext From<TEntityType>(string alias = null)
             where TEntityType : class
         {
-            return new SqlQueryContext<TEntityType>(alias);
+            return new SqlQueryContext<TEntityType>(alias, null);
+        }
+
+        public static SqlQueryContext From<TEntityType>(string from, string alias = null)
+           where TEntityType : class
+        {
+            return new SqlQueryContext<TEntityType>(from, alias);
         }
 
         public static SqlInsertContext<TEntityType> Insert<TEntityType>(TEntityType obj)
